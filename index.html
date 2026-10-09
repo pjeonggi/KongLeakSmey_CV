@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kong Leak Smey - CV</title>
+    <style>
+        /* Modern, clean A4-ready styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1e2b45;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .cv-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 1000px;
+            padding: 40px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+        }
+
+        .content-shell {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .sidebar {
+            width: 34%;
+            background: #f7f9fb;
+            border: 1px solid #edf1f5;
+            border-radius: 12px;
+            padding: 22px 18px;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 3px solid #1e2b45;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 100px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-info h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e2b45;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .header-info .subtitle {
+            font-size: 16px;
+            color: #5a6a7a;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 25px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .contact-details span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-details a {
+            text-decoration: none;
+            color: #1e2b45;
+            font-weight: 500;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* General Section Styles */
+        h2.section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e2b45;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .sidebar h2.section-title {
+            margin-top: 26px;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .sidebar > h2.section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Profile */
+        .profile-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        /* Education */
+        .edu-item {
+            margin-bottom: 5px;
+        }
+        
+        .edu-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e2b45;
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        .edu-item .date {
+            display: block;
+            font-size: 14px;
+            color: #7a8a9a;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .edu-institution {
+            font-size: 15px;
+            color: #5a6a7a;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        /* Projects and Experience (List styling) */
+        .project-item {
+            margin-bottom: 18px;
+        }
+
+        .project-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e2b45;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .project-item .tech-stack {
+            font-size: 13px;
+            color: #5a6a7a;
+            font-weight: 500;
+            background: #f0f3f7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .project-item ul {
+            list-style-type: none;
+            margin-top: 6px;
+            padding-left: 10px;
+        }
+
+        .project-item ul li {
+            font-size: 14.5px;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .project-item ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #1e2b45;
+            font-weight: bold;
+        }
+
+        /* Skills, Languages, Volunteer */
+        .skills-grid {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .skill-cat {
+            display: block;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .skill-cat strong {
+            color: #1e2b45;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .skill-cat span {
+            color: #2c3e50;
+            display: block;
+        }
+
+        .volunteer-item {
+            margin-bottom: 15px;
+        }
+
+        .volunteer-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e2b45;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .volunteer-item .org {
+            font-size: 15px;
+            color: #5a6a7a;
+            font-weight: 500;
+        }
+
+        .volunteer-item p {
+            font-size: 14.5px;
+            color: #2c3e50;
+            margin-top: 4px;
+            padding-left: 10px;
+        }
+
+        .lang-item {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        .lang-item strong {
+            color: #1e2b45;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        /* Print Layout */
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body { background: white; padding: 0; }
+            .cv-container { 
+                box-shadow: none; 
+                border-radius: 0; 
+                padding: 0;
+                max-width: 100%;
+            }
+            .content-shell {
+                display: table;
+                width: 100%;
+                gap: 0;
+            }
+            .sidebar,
+            .main-content,
+            .project-item,
+            .volunteer-item,
+            .edu-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .sidebar {
+                display: table-cell;
+                width: 35%;
+                background: transparent;
+                border: 1px solid #e8edf3;
+                vertical-align: top;
+                padding: 16px 14px;
+            }
+            .main-content {
+                display: table-cell;
+                width: 65%;
+                vertical-align: top;
+                padding-left: 18px;
+            }
+            .contact-details a { text-decoration: none; }
+            h2.section-title {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- HEADER -->
+    <div class="header">
+        <!-- IMPORTANT: Save your photo in the same folder as this file and rename it here -->
+        <img src="./pic/profile 4x6.png" alt="Kong Leak Smey" onerror="this.style.display='none'">
+        
+        <div class="header-info">
+            <h1>KONG LEAK SMEY</h1>
+            <div class="subtitle">Computer Science Student</div>
+            <div class="contact-details">
+                <span>📍 Phnom Penh, Cambodia</span>
+                <span>✉️ <a href="mailto:konglksmey@gmail.com">konglksmey@gmail.com</a></span>
+                <span>📞 <a href="tel:+855965652346">+855 965652346</a></span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
+                        <path fill="#29b6f6" d="M24,4C13,4,4,13,4,24s9,20,20,20s20-9,20-20S35,4,24,4z"></path><path fill="#fff" d="M34,15l-3.7,19.1c0,0-0.2,0.9-1.2,0.9c-0.6,0-0.9-0.3-0.9-0.3L20,28l-4-2l-5.1-1.4c0,0-0.9-0.3-0.9-1	c0-0.6,0.9-0.9,0.9-0.9l21.3-8.5c0,0,0.7-0.2,1.1-0.2c0.3,0,0.6,0.1,0.6,0.5C34,14.8,34,15,34,15z"></path><path fill="#b0bec5" d="M23,30.5l-3.4,3.4c0,0-0.1,0.1-0.3,0.1c-0.1,0-0.1,0-0.2,0l1-6L23,30.5z"></path><path fill="#cfd8dc" d="M29.9,18.2c-0.2-0.2-0.5-0.3-0.7-0.1L16,26c0,0,2.1,5.9,2.4,6.9c0.3,1,0.6,1,0.6,1l1-6l9.8-9.1	C30,18.7,30.1,18.4,29.9,18.2z"></path>
+                    </svg>
+                    <a href="https://t.me/kongleaksmey">Telegram: @kongleaksmey</a></span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
+                        <path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"></path><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"></path>
+                    </svg>
+                    <a href="https://linkedin.com/in/kong-leak-smey" target="_blank">LinkedIn: linkedin.com/in/kong-leak-smey</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-shell">
+        <aside class="sidebar">
+            <!-- EDUCATION -->
+            <h2 class="section-title">Education</h2>
+            <div class="edu-item">
+                <h3>Bachelor of Computer Science</h3>
+                <span class="date">Expected Graduation: 2028</span>
+            </div>
+            <div class="edu-institution">Cambodia Academy of Digital Technology (CADT)</div>
+            
+            <div class="edu-item">
+                <h3>English Language Program GEP</h3>
+                <span class="date">Graduation Year: 2025</span>
+            </div>
+            <div class="edu-institution">Australian Centre for Education (ACE)</div>
+
+            <div class="edu-item">
+                <h3>Senior High School</h3>
+                <span class="date">Graduation Year: 2024</span>
+            </div>
+            <div class="edu-institution">NGS Preah Sisowath High School</div>
+            
+            <div class="edu-item">
+                <h3>English Language Program YLP</h3>
+                <span class="date">Graduation Year: 2023</span>
+            </div>
+            <div class="edu-institution">Australian Centre for Education (ACE)</div>
+            
+            <div class="edu-item">
+                <h3>Kingdergarden · Elementary · Junior High School</h3>
+                <span class="date">Switch Year: 2022</span>
+            </div>    
+            <div class="edu-institution">Cambodia-Australia School</div>
+
+            <!-- SKILLS -->
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-cat"><strong>Communication:</strong> <span>Friendly, Reliable, Teamwork</span></div>
+                <div class="skill-cat"><strong>Programming Languages:</strong> <span>C, C++, Python, JavaScript</span></div>
+                <div class="skill-cat"><strong>Web Development:</strong> <span>HTML, React, Node.js, Express</span></div>
+                <div class="skill-cat"><strong>Databases:</strong> <span>SQL, Database Design</span></div>
+                <div class="skill-cat"><strong>Tools &amp; Frameworks:</strong> <span>Qt, Tigr, Academic Documentation</span></div>
+            </div>
+
+            <!-- LANGUAGES -->
+            <h2 class="section-title">Languages</h2>
+            <div class="lang-item">
+                <strong>Khmer:</strong> Native
+            </div>
+            <div class="lang-item">
+                <strong>English:</strong> Professional Working Proficiency
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- PROFILE -->
+            <h2 class="section-title">Profile</h2>
+            <p class="profile-text">
+                Driven Computer Science student at the Cambodia Academy of Digital Technology (CADT) with a deep passion for STEM education, software development, youth empowerment, and help out in society. 
+                Dedicated to helping young learners cultivate computational thinking, creativity, and problem-solving skills through coding and project-based learning. 
+                Involvoving in volunteering, assisting, and managing in math competition event, workshop, and community program. 
+                Experienced in developing applications across multiple programming languages and frameworks, with a strong commitment to innovation, collaboration, and continuous improvement.
+            </p>
+
+            <!-- VOLUNTEER EXPERIENCE -->
+            <h2 class="section-title">Volunteer Experience</h2>
+            
+            <div class="volunteer-item">
+                <h4>AV · Stage team</h4> <span class="org">Plug and Play Cambodia</span>
+                <p>Contributed to community-driven tech initiatives and supported STEM-focused programs.</p>
+            </div>
+
+            <div class="volunteer-item">
+                <h4>Workshop Assistant</h4> <span class="org">ATC (AUPP Technology Center)</span>
+                <p>Assisted in facilitating workshop sessions for 3 months, promoting technology education to young learners.</p>
+            </div>
+
+            <div class="volunteer-item">
+                <h4>Committee Member</h4> <span class="org">Cambodia International Mathematical Olympiad (CIMO)</span>
+                <p>Facilitated teamwork and project coordination for large-scale math competitions, enhancing communication skills.</p>
+            </div>
+
+            <div class="volunteer-item">
+                <h4>Inspector · Stage Flow · Seat Arrangement </h4> <span class="org">Angkor Mathematics Competition (2023 · 2024)</span>
+                <p>Contributed to community-driven tech initiatives and supported STEM-focused programs.</p>
+            </div>
+
+            <!-- ACADEMIC PROJECTS -->
+            <h2 class="section-title">Academic Projects</h2>
+            
+            <div class="project-item">
+                <h4>SongKet</h4><span class="tech-stack">React · Python · Docker · Telegram Bot API · Telegram Mini-App</span>
+                <ul>
+                    <li>Built a Telegram Bot that could detect malicious or phishing Files/URLs in the group chats or personal chats.</li>
+                    <li>Once detected as malicious or phishing Files/URLs will automatically deleted from the chat. </li>
+                    <li>Implemented interface into Telegram Mini-App for admins to tracking the history of the protected groups whether to identified, who had been hacked. Make decision restrict users, whitelist Files/URLs, manage customize settings.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>PathEat</h4><span class="tech-stack">Node.js · Express · SQL</span>
+                <ul>
+                    <li>Built a full-stack multi-role food vendor management system supporting consumer, vendor, and admin interfaces.</li>
+                    <li>Implemented audit logs, backup/recovery features, and a streamlined vendor onboarding process.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>Thnam</h4><span class="tech-stack">React</span>
+                <ul>
+                    <li>Developed a patient-doctor platform that facilitates prescription generation, medication reminders, and inventory management.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>Jomnay</h4><span class="tech-stack">Python · Telegram Bot API</span>
+                <ul>
+                    <li>Created a Telegram bot for personal expense tracking, featuring allowance limits, savings plan integration, and CSV export functionality.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>To-Do List</h4><span class="tech-stack">C++ · Qt GUI</span>
+                <ul>
+                    <li>Designed a cross-platform desktop application to organize daily routines and manage reminders via a graphical interface.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>Chess</h4><span class="tech-stack">C · Tigr GUI</span>
+                <ul>
+                    <li>Engineered a fully functional chess game with a graphical user interface, implementing standard chess logic and move validation.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h4>Catch n Score</h4><span class="tech-stack">Scratch</span>
+                <ul>
+                    <li>Developed an interactive game project demonstrating core logic, event handling, and creativity in visual programming.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+</div>
+
+</body>
+</html>
